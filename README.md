@@ -1,89 +1,93 @@
 # DriverApp
-Приложение для водителей транспортной компании.  
-## Стек
-  * Kotlin 
-  * Coroutines
-  * Flow
-  * Hilt
-  * MVVM
-  * Room 
-  * Retrofit
-  * Yandex maps API (mapkit)
-  
-## Дополнительная информация
-Приложение находится в разработке.  
-Код данного проекта является конфиденциальной информацией.
 
-## Приложение
-### Навигационное меню
+[🇷🇺 Read in Russian](README_RU.md)
+
+An application for a transportation company’s drivers.  
+
+## Tech Stack
+- Kotlin  
+- Coroutines  
+- Flow  
+- Hilt  
+- MVVM  
+- Room  
+- Retrofit  
+- Yandex Maps API (mapkit)  
+
+## Additional Information
+The application is under development.  
+The code of this project is confidential.  
+
+## Application
+
+### Navigation Menu
 <img src="images/nav-menu.jpg" style="width: 30%">
 
-### Главная страница
-Главный фрагмент с картой.  
-Объекты на карте, ориентирование и масштаб карты зависят от статуса активного заказа.  
-Если активного заказа нет -> показывается текущее местоположение.  
-Доступны кнопки
-* центрирования карты на текущем положении
-* ориентирования карты по северу
+### Main Page
+Main fragment with a map.  
+Objects on the map, orientation, and zoom depend on the status of the active order.  
+If there is no active order → the current location is displayed.  
+Available buttons:
+- center the map on the current location  
+- orient the map to the north  
 
-Если есть активный заказ, показывается краткая информация для текущего статуса и кнопка перехода на фрагмент **Статус заказа**.  
-Доступна кнопка "info" в верхнем меню справа, которая видна только при наличии активного заказа.  
-При нажатии открывается карточка с общей информацией по заказу.
+If there is an active order, brief information for the current status and a button to navigate to the **Order Status** fragment are displayed.  
+An "info" button is available in the top right menu, visible only if there is an active order.  
+When pressed, it opens a card with general order details.  
 
 <div style="display: flex;">
   <img src="images/main_started.jpg" style="width: 30%; margin-right: 10px;">
   <img src="images/main_order_info.jpg" style="width: 30%">
 </div>
 
-### Текущие поставки
+### Current Deliveries
 <img src="images/current_deliveries.jpg" style="width: 30%">
 
-### Текущий заказ
-Если заказ еще не активен (статус "заказ размещен"), его можно принять.  
-Если заказ активен, кнопка меняет значения с "**взять в работу**" на "**стаутс**".  
-При значении
-* "**взять в работу**" -> меняется статус заказа
-* "**стаутс**" -> переход на фрагмент "Статус заказа"
+### Current Order
+If the order is not yet active (status: "order placed"), it can be accepted.  
+If the order is active, the button changes between "**take in progress**" and "**status**".  
+When:  
+- "**take in progress**" → the order status changes  
+- "**status**" → navigates to the "Order Status" fragment  
 
-Срок доставки расчитывается как разница дат (с математическим округлением часов)
+The delivery time is calculated as the date difference (with mathematical rounding of hours).  
 
 <img src="images/current_delivery.jpg" style="width: 30%">
 
-
-### Статус заказа
-Кнопка внизу страницы меняет статус заказа на следующий.  
-При разном статусе показывается различная информация.  
-Карта неподвижна и любое взаимодейсвтие с ней заблокировано (кроме клика).  
-По клику по карте происходит переход на главный фрагмент.
+### Order Status
+The button at the bottom of the page changes the order status to the next one.  
+Different information is displayed depending on the status.  
+The map is static and all interaction is disabled (except clicking).  
+Clicking on the map navigates to the main fragment.  
 
 <img src="images/status_started.jpg" style="width: 30%">
 
-#### Статус заказа: машина загружена
-После загрузки машины виден маршрут от пункта загрузки до пункта разгрузки
+#### Order Status: Vehicle Loaded
+After loading, the route from the loading point to the unloading point is displayed.  
+
 <div style="display: flex;">
  <img src="images/status_loaded.jpg" style="width: 30%; margin-right: 10px;">
  <img src="images/main_on_way.jpg" style="width: 30%; margin-right: 10px;">
   <img src="images/main_loaded.jpg" style="width: 30%">
 </div>
 
+#### Order Status: On the Way
+An "**on a stop**" button is available, which:  
+- changes the order status  
+- adds a marker on the map at the current location  
+- hides the button to switch to the "**vehicle arrived at unloading point**" status  
+- changes its text back to "**on the way**" for returning to that status  
 
-#### Статус заказа: в дороге
-доступна кнопка "**на стоянке**", которая:
-* изменяет статус заказа
-* добавляет метку на карте текущего местоположения
-* скрывает кнопку перехода на статус "**ТС прибыло на место разрузки**"
-* меняет текст кнопки на "**в дороге**", для возвращения к данному статусу
-
-При нескольких стоянок на маршруте на карте и на главном фрагменте будут показаны все стоянки.
+If there are multiple stops along the route, all of them will be shown on the map and main fragment.  
 
 <div style="display: flex;">
   <img src="images/status_on_way.jpg" style="width: 30%; margin-right: 10px;">
   <img src="images/status_onStand.jpg" style="width: 30%">
 </div>
 
-#### Статус заказа: загрузить документы
-По кнопке доступна загрузка фото из файлов или можно сделать фото через камеру.
-Загруженные документы возможно просматривать перед отправкой
+#### Order Status: Upload Documents
+The button allows uploading a photo from files or taking a photo with the camera.  
+Uploaded documents can be previewed before sending.  
 
 <div style="display: flex;">
   <img src="images/status_loadDocuments.jpg" style="width: 30%; margin-right: 10px;">
@@ -91,24 +95,23 @@
   <img src="images/status_documents_uploaded.jpg" style="width: 30%">
 </div>
 
-### Поддержка темной темы
+### Dark Theme Support
 <div style="display: flex;">
   <img src="images/night_main.jpg" style="width: 30%; margin-right: 10px;">
   <img src="images/night_status_point.jpg" style="width: 30%; margin-right: 10px;">
   <img src="images/night_status_route.jpg" style="width: 30%">
 </div>
 
-### История заказов (с сортировкой по убыванию даты)
- <img src="images/delivery_history.jpg" style="width: 30%">
+### Order History (sorted by date in descending order)
+<img src="images/delivery_history.jpg" style="width: 30%">
 
-### Связь с разработчиком
-**Telegram** и **Whatapp** -> открываются мессенджеры с перепиской.  
-При нажатии на "**позвонить**" начинается вызов.  
+### Contact Developer
+**Telegram** and **WhatsApp** → open messengers with a chat window.  
+Pressing "**call**" starts a phone call.  
 
- <img src="images/contacts.jpg" style="width: 30%">
+<img src="images/contacts.jpg" style="width: 30%">
 
-
-### Мой профиль и изменение пароля
+### My Profile and Change Password
 <div style="display: flex;">
 <img src="images/profile.jpg"style="width: 30%; margin-right: 10px;">
   <img src="images/profile_changing_pass.jpg" style="width: 30%; margin-right: 10px;">
