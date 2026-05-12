@@ -16,7 +16,7 @@ An application for a transportation company’s drivers.
 
 ## Additional Information
 The application is under development.  
-The code of this project is confidential.  
+Repository contains code samples for portfolio purposes. Some implementation details and API credentials have been removed/replaced. 
 
 ## Application
 
